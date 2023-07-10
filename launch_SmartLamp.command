@@ -1,0 +1,1 @@
+java -jar /Users/samuelkreyenbuhl/Documents/Github/SmartLamp/target/SmartLamp-1.0-SNAPSHOT-jar-with-dependencies.jar tasmota-814922-2338.fritz.box
