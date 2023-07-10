@@ -6,6 +6,8 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
 
@@ -33,12 +35,6 @@ public class Main {
         TrayIcon trayIcon = new TrayIcon(lightOn, "SystemTray Menu");
         trayIcon.setImageAutoSize(true);
 
-        if (getStatus(args[0])) {
-            trayIcon.setImage(lightOn);
-        } else {
-            trayIcon.setImage(lightOff);
-        }
-
         trayIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -55,6 +51,18 @@ public class Main {
         } catch (AWTException ex) {
             System.out.println("TrayIcon could not be added.");
         }
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (getStatus(args[0])) {
+                    trayIcon.setImage(lightOn);
+                } else {
+                    trayIcon.setImage(lightOff);
+                }
+            }
+        }, 0, 5000);
     }
 
     private static boolean toggleLight(String address) {
