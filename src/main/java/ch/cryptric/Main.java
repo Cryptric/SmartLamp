@@ -46,7 +46,7 @@ public class Main {
         trayIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (!(getOS() == OS.WINDOWS) || e.getButton() != MouseEvent.BUTTON1) {
+                if (!(getOS() == OS.MAC) && e.getButton() != MouseEvent.BUTTON1) {
                     return;
                 }
 
