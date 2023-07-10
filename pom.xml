@@ -61,6 +61,7 @@
                 <version>1.4.0</version>
                 <configuration>
                     <name>SmartLamp</name>
+                    <macPackageName>SmartLamp</macPackageName>
                     <type>APP_IMAGE</type>
                     <appVersion>1.0.0</appVersion>
                     <vendor>ch.cryptric</vendor>
@@ -78,6 +79,8 @@
                     <runtimeImage>target/image/default</runtimeImage>
                     <javaOptions>
                         <option>-Dfile.encoding=UTF-8</option>
+                        <option>-Dapple.awt.UIElement=true</option>
+                        <option>-Dapple.awt.headless=true</option>
                     </javaOptions>
                     <arguments>
                         <argument>
