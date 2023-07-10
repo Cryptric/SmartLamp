@@ -32,12 +32,19 @@ public class Main {
 
         // Create a system tray icon
         SystemTray tray = SystemTray.getSystemTray();
-        TrayIcon trayIcon = new TrayIcon(lightOn, "SystemTray Menu");
+
+        PopupMenu popup = new PopupMenu();
+
+        TrayIcon trayIcon = new TrayIcon(lightOn, "SmartLamp", popup);
         trayIcon.setImageAutoSize(true);
 
         trayIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (e.getButton() != MouseEvent.BUTTON1) {
+                    return;
+                }
+
                 if (toggleLight(args[0])) {
                     trayIcon.setImage(lightOn);
                 } else {
@@ -45,6 +52,11 @@ public class Main {
                 }
             }
         });
+
+        MenuItem quitMenuItem = new MenuItem("Quit SmartLamp");
+        quitMenuItem.addActionListener(e -> System.exit(0));
+
+        popup.add(quitMenuItem);
 
         try {
             tray.add(trayIcon);
