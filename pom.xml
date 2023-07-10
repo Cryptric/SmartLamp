@@ -41,6 +41,58 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+
+            <plugin>
+                <artifactId>maven-jlink-plugin</artifactId>
+                <version>3.1.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <!-- configuration elements goes here -->
+                    <addModules>ch.cryptric</addModules>
+                    <outputDirectoryImage>target/image</outputDirectoryImage>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <name>SmartLamp</name>
+                    <type>APP_IMAGE</type>
+                    <appVersion>1.0.0</appVersion>
+                    <vendor>ch.cryptric</vendor>
+                    <description>SmartLamp, SamKry and Cryptric</description>
+                    <copyright>SamKry and Cryptric</copyright>
+                    <icon>src/main/resources/Icon.ico</icon>
+                    <destination>target/dist</destination>
+                    <input>src/main/resources</input>
+                    <modulePaths>
+                        <modulePath>
+                            target/classes
+                        </modulePath>
+                    </modulePaths>
+                    <module>ch.cryptric/ch.cryptric.Main</module>
+                    <runtimeImage>target/image/default</runtimeImage>
+                    <javaOptions>
+                        <option>-Dfile.encoding=UTF-8</option>
+                    </javaOptions>
+                    <arguments>
+                        <argument>
+                            <!-- your devices ip -->
+                        </argument>
+                    </arguments>
+                </configuration>
+                <executions>
+                    <execution>
+
+                    </execution>
+                </executions>
+            </plugin>
+
+
         </plugins>
     </build>
 
